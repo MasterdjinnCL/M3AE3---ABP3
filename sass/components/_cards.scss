@@ -1,0 +1,244 @@
+// ==========================================================================
+// Cards
+// ==========================================================================
+
+.card {
+  background: $color-white;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  @include card-shadow(md);
+  transition: all $transition-base;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  // Card header
+  &__header {
+    padding: $spacing-lg;
+    border-bottom: 1px solid $color-gray-light;
+    background: $color-light;
+  }
+
+  // Card body
+  &__body {
+    padding: $spacing-lg;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Card footer
+  &__footer {
+    padding: $spacing-lg;
+    border-top: 1px solid $color-gray-light;
+    background: $color-light;
+  }
+
+  // Card title
+  &__title {
+    margin: 0 0 $spacing-sm 0;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-dark;
+  }
+
+  // Card subtitle
+  &__subtitle {
+    margin: 0 0 $spacing-md 0;
+    font-size: $font-size-sm;
+    color: $color-gray;
+    font-weight: $font-weight-normal;
+  }
+
+  // Card description/text
+  &__description {
+    margin: 0 0 $spacing-md 0;
+    color: $color-gray-dark;
+    line-height: $line-height-normal;
+    flex: 1;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Card image
+  &__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  // Card icon
+  &__icon {
+    @include flex-center;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto $spacing-md;
+    background: linear-gradient(135deg, $color-primary, $color-secondary);
+    color: $color-white;
+    border-radius: $border-radius-full;
+    font-size: $font-size-xl;
+  }
+
+  // Card actions
+  &__actions {
+    @include flex-center;
+    gap: $spacing-sm;
+    margin-top: auto;
+    padding-top: $spacing-md;
+    
+    .btn {
+      &:only-child {
+        flex: none;
+      }
+    }
+  }
+
+  // Card variants
+  &--horizontal {
+    @include flex-between;
+    align-items: stretch;
+    
+    .card__image {
+      width: 200px;
+      height: auto;
+      min-height: 100%;
+    }
+    
+    .card__content {
+      flex: 1;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      
+      .card__image {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  }
+
+  &--minimal {
+    box-shadow: none;
+    border: 1px solid $color-gray-light;
+    
+    &:hover {
+      border-color: $color-primary;
+      transform: none;
+    }
+  }
+
+  &--elevated {
+    @include card-shadow(lg);
+    
+    &:hover {
+      @include card-shadow(xl);
+    }
+  }
+
+  &--gradient {
+    background: linear-gradient(135deg, $color-primary, $color-secondary);
+    color: $color-white;
+    
+    .card__title,
+    .card__description {
+      color: $color-white;
+    }
+  }
+
+  &--bordered {
+    border: 2px solid $color-primary;
+    box-shadow: none;
+    
+    &:hover {
+      border-color: $color-primary-dark;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Card grid
+.cards {
+  &__title {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    font-size: $font-size-xxxl;
+    color: $color-dark;
+  }
+
+  &__grid {
+    display: grid;
+    gap: $spacing-lg;
+    grid-template-columns: 1fr;
+    
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @include respond-to(xl) {
+      gap: $spacing-xl;
+    }
+  }
+}
+
+// Card deck (equal height cards)
+.card-deck {
+  display: grid;
+  gap: $spacing-lg;
+  grid-template-columns: 1fr;
+  
+  @include respond-to(sm) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    .card__body {
+      flex: 1;
+    }
+  }
+}
+
+// Loading card skeleton
+.card--loading {
+  .card__title,
+  .card__description {
+    background: linear-gradient(90deg, $color-gray-light 25%, $color-light 50%, $color-gray-light 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: $border-radius-sm;
+    color: transparent;
+  }
+  
+  .card__title {
+    height: 24px;
+    margin-bottom: $spacing-sm;
+  }
+  
+  .card__description {
+    height: 60px;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz Web con SASS 7-1</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=150&h=50&fit=crop&crop=center" alt="Logo" class="header__logo-img">
+            </div>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item"><a href="#inicio" class="header__nav-link">Inicio</a></li>
+                    <li class="header__nav-item"><a href="#sobre-nosotros" class="header__nav-link">Sobre Nosotros</a></li>
+                    <li class="header__nav-item"><a href="#servicios" class="header__nav-link">Servicios</a></li>
+                    <li class="header__nav-item"><a href="#contacto" class="header__nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="header__menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span class="header__menu-line"></span>
+                <span class="header__menu-line"></span>
+                <span class="header__menu-line"></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="header__nav-mobile">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="#inicio" class="header__nav-link">Inicio</a></li>
+                <li class="header__nav-item"><a href="#sobre-nosotros" class="header__nav-link">Sobre Nosotros</a></li>
+                <li class="header__nav-item"><a href="#servicios" class="header__nav-link">Servicios</a></li>
+                <li class="header__nav-item"><a href="#contacto" class="header__nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__container">
+                <h1 class="hero__title">Bienvenido a Nuestro Sitio Web</h1>
+                <p class="hero__subtitle">Una interfaz moderna desarrollada con SASS y el patrón 7-1</p>
+                <button class="btn btn--primary btn--large">Comenzar</button>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content">
+            <div class="content__container">
+                <div class="content__grid animate-on-scroll">
+                    <div class="content__text">
+                        <h2 class="content__title">Sobre Nuestro Proyecto</h2>
+                        <p class="content__paragraph">
+                            Este proyecto demuestra la implementación del patrón 7-1 de SASS, 
+                            una metodología que organiza los estilos CSS de manera modular y escalable. 
+                            Esta estructura facilita el mantenimiento y la expansión del código.
+                        </p>
+                        <p class="content__paragraph">
+                            El patrón 7-1 divide los estilos en siete carpetas principales: 
+                            abstracts, base, components, layout, pages, themes y vendors, 
+                            más un archivo principal que importa todos los demás.
+                        </p>
+                        <button class="btn btn--secondary">Leer Más</button>
+                    </div>
+                    <div class="content__image">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=400&fit=crop&crop=center" 
+                             alt="Equipo colaborando en un proyecto de desarrollo web" class="content__img">
+                    </div>
+                </div>
+
+                <!-- Cards Section -->
+                <div class="cards animate-on-scroll">
+                    <h2 class="cards__title">Nuestros Servicios</h2>
+                    <div class="cards__grid">
+                        <div class="card">
+                            <div class="card__body">
+                                <div class="card__icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h3 class="card__title">Desarrollo Web</h3>
+                                <p class="card__description">
+                                    Creamos sitios web modernos y responsivos utilizando las mejores prácticas.
+                                </p>
+                                <div class="card__actions">
+                                    <button class="btn btn--outline btn--small">Ver Más</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <div class="card__icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <h3 class="card__title">Diseño UI/UX</h3>
+                                <p class="card__description">
+                                    Diseñamos interfaces intuitivas centradas en la experiencia del usuario.
+                                </p>
+                                <div class="card__actions">
+                                    <button class="btn btn--outline btn--small">Ver Más</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <div class="card__icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h3 class="card__title">Desarrollo Móvil</h3>
+                                <p class="card__description">
+                                    Desarrollamos aplicaciones móviles nativas e híbridas.
+                                </p>
+                                <div class="card__actions">
+                                    <button class="btn btn--outline btn--small">Ver Más</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Contacto</h3>
+                    <p class="footer__text">Email: info@ejemplo.com</p>
+                    <p class="footer__text">Teléfono: +1 234 567 890</p>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Enlaces</h3>
+                    <ul class="footer__links">
+                        <li><a href="#" class="footer__link">Política de Privacidad</a></li>
+                        <li><a href="#" class="footer__link">Términos de Servicio</a></li>
+                        <li><a href="#" class="footer__link">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Síguenos</h3>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="footer__social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="footer__social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="footer__social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; 2025 Todos los derechos reservados. Proyecto SASS 7-1.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

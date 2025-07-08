@@ -1,0 +1,230 @@
+// ==========================================================================
+// Footer
+// ==========================================================================
+
+.footer {
+  background: $color-dark;
+  color: $color-white;
+  margin-top: auto;
+  
+  &__container {
+    @include container();
+  }
+
+  &__content {
+    display: grid;
+    gap: $spacing-xl;
+    padding: $spacing-xxl 0;
+    grid-template-columns: 1fr;
+    
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-xxxl;
+    }
+  }
+
+  &__section {
+    &:last-child {
+      @include respond-to(sm) {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+      
+      @include respond-to(lg) {
+        grid-column: auto;
+        text-align: left;
+      }
+    }
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+    color: $color-white;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, $color-primary, $color-secondary);
+      border-radius: 1px;
+    }
+  }
+
+  &__text {
+    color: $color-gray-light;
+    margin-bottom: $spacing-sm;
+    line-height: $line-height-normal;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__link {
+    color: $color-gray-light;
+    text-decoration: none;
+    display: block;
+    padding: $spacing-xs 0;
+    transition: color $transition-base;
+    
+    &:hover {
+      color: $color-primary-light;
+      text-decoration: none;
+    }
+    
+    &:focus {
+      @include focus-outline($color-primary-light);
+    }
+  }
+
+  // Social media links
+  &__social {
+    @include flex-center;
+    gap: $spacing-md;
+    justify-content: flex-start;
+    
+    @include respond-to(sm) {
+      justify-content: center;
+    }
+    
+    @include respond-to(lg) {
+      justify-content: flex-start;
+    }
+  }
+
+  &__social-link {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    background: rgba($color-white, 0.1);
+    color: $color-gray-light;
+    border-radius: $border-radius-full;
+    transition: all $transition-base;
+    text-decoration: none;
+    
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    
+    &:focus {
+      @include focus-outline($color-primary-light);
+    }
+    
+    i {
+      font-size: $font-size-lg;
+    }
+  }
+
+  // Footer bottom
+  &__bottom {
+    border-top: 1px solid rgba($color-white, 0.1);
+    padding: $spacing-lg 0;
+    text-align: center;
+  }
+
+  &__copyright {
+    color: $color-gray-light;
+    font-size: $font-size-sm;
+    margin: 0;
+    
+    @include respond-to(lg) {
+      @include flex-between;
+      text-align: left;
+    }
+  }
+
+  // Footer variants
+  &--light {
+    background: $color-light;
+    color: $color-dark;
+    
+    .footer__title {
+      color: $color-dark;
+    }
+    
+    .footer__text,
+    .footer__link {
+      color: $color-gray-dark;
+      
+      &:hover {
+        color: $color-primary;
+      }
+    }
+    
+    .footer__social-link {
+      background: rgba($color-dark, 0.1);
+      color: $color-gray-dark;
+      
+      &:hover {
+        background: $color-primary;
+        color: $color-white;
+      }
+    }
+    
+    .footer__bottom {
+      border-top-color: rgba($color-dark, 0.1);
+    }
+    
+    .footer__copyright {
+      color: $color-gray-dark;
+    }
+  }
+
+  &--gradient {
+    background: linear-gradient(135deg, $color-primary-dark, $color-secondary-dark);
+    
+    .footer__social-link {
+      background: rgba($color-white, 0.2);
+      
+      &:hover {
+        background: rgba($color-white, 0.3);
+        color: $color-white;
+      }
+    }
+  }
+
+  &--minimal {
+    padding: $spacing-lg 0;
+    
+    .footer__content {
+      padding: 0;
+      text-align: center;
+      grid-template-columns: 1fr;
+    }
+    
+    .footer__bottom {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+}
+
+// Sticky footer layout
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}

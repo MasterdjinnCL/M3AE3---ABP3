@@ -1,0 +1,119 @@
+// ==========================================================================
+// Functions
+// ==========================================================================
+
+// Color functions
+// --------------------------------------------------------------------------
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// Spacing functions
+// --------------------------------------------------------------------------
+@function spacing($multiplier) {
+  @return $spacing-md * $multiplier;
+}
+
+// Convert px to rem
+// --------------------------------------------------------------------------
+@function rem($pixels, $context: 16) {
+  @return ($pixels / $context) * 1rem;
+}
+
+// Convert px to em
+// --------------------------------------------------------------------------
+@function em($pixels, $context: 16) {
+  @return ($pixels / $context) * 1em;
+}
+
+// Get color from palette
+// --------------------------------------------------------------------------
+@function get-color($color-name, $variant: base) {
+  $color-map: (
+    primary: (
+      light: $color-primary-light,
+      base: $color-primary,
+      dark: $color-primary-dark
+    ),
+    secondary: (
+      light: $color-secondary-light,
+      base: $color-secondary,
+      dark: $color-secondary-dark
+    ),
+    gray: (
+      light: $color-gray-light,
+      base: $color-gray,
+      dark: $color-gray-dark
+    )
+  );
+
+  @if map-has-key($color-map, $color-name) {
+    $color-variants: map-get($color-map, $color-name);
+    @if map-has-key($color-variants, $variant) {
+      @return map-get($color-variants, $variant);
+    } @else {
+      @warn "Variant `#{$variant}` not found for color `#{$color-name}`.";
+      @return null;
+    }
+  } @else {
+    @warn "Color `#{$color-name}` not found in color map.";
+    @return null;
+  }
+}
+
+// Get z-index value
+// --------------------------------------------------------------------------
+@function z-index($layer) {
+  $z-indexes: (
+    dropdown: $z-index-dropdown,
+    sticky: $z-index-sticky,
+    fixed: $z-index-fixed,
+    modal-backdrop: $z-index-modal-backdrop,
+    modal: $z-index-modal,
+    popover: $z-index-popover,
+    tooltip: $z-index-tooltip
+  );
+
+  @if map-has-key($z-indexes, $layer) {
+    @return map-get($z-indexes, $layer);
+  } @else {
+    @warn "Z-index layer `#{$layer}` not found.";
+    @return auto;
+  }
+}
+
+// Calculate contrast ratio
+// --------------------------------------------------------------------------
+@function luminance($color) {
+  $red: red($color) / 255;
+  $green: green($color) / 255;
+  $blue: blue($color) / 255;
+
+  $red: if($red < 0.03928, $red / 12.92, pow(($red + 0.055) / 1.055, 2.4));
+  $green: if($green < 0.03928, $green / 12.92, pow(($green + 0.055) / 1.055, 2.4));
+  $blue: if($blue < 0.03928, $blue / 12.92, pow(($blue + 0.055) / 1.055, 2.4));
+
+  @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
+}
+
+@function contrast-ratio($color1, $color2) {
+  $luminance1: luminance($color1);
+  $luminance2: luminance($color2);
+  $lighter: max($luminance1, $luminance2);
+  $darker: min($luminance1, $luminance2);
+
+  @return ($lighter + 0.05) / ($darker + 0.05);
+}
+
+// Get readable color
+// --------------------------------------------------------------------------
+@function readable-color($background-color, $light-color: $color-white, $dark-color: $color-black) {
+  $light-contrast: contrast-ratio($background-color, $light-color);
+  $dark-contrast: contrast-ratio($background-color, $dark-color);
+
+  @return if($light-contrast > $dark-contrast, $light-color, $dark-color);
+}

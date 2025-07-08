@@ -1,0 +1,196 @@
+// ==========================================================================
+// Buttons
+// ==========================================================================
+
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid transparent;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  line-height: 1.2;
+  user-select: none;
+  
+  &:focus {
+    @include focus-outline;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // Button variants
+  &--primary {
+    @include button-variant($color-primary);
+  }
+
+  &--secondary {
+    @include button-variant($color-secondary);
+  }
+
+  &--success {
+    @include button-variant($color-success);
+  }
+
+  &--warning {
+    @include button-variant($color-warning, $color-dark);
+  }
+
+  &--danger {
+    @include button-variant($color-danger);
+  }
+
+  &--info {
+    @include button-variant($color-info);
+  }
+
+  &--light {
+    @include button-variant($color-light, $color-dark);
+  }
+
+  &--dark {
+    @include button-variant($color-dark);
+  }
+
+  // Outline variants
+  &--outline {
+    @include button-outline($color-primary);
+    
+    &.btn--secondary {
+      @include button-outline($color-secondary);
+    }
+    
+    &.btn--success {
+      @include button-outline($color-success);
+    }
+    
+    &.btn--warning {
+      @include button-outline($color-warning);
+    }
+    
+    &.btn--danger {
+      @include button-outline($color-danger);
+    }
+    
+    &.btn--info {
+      @include button-outline($color-info);
+    }
+    
+    &.btn--dark {
+      @include button-outline($color-dark);
+    }
+  }
+
+  // Button sizes
+  &--small {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-sm;
+  }
+
+  &--large {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-lg;
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  // Button with icon
+  &--icon {
+    @include flex-center;
+    gap: $spacing-xs;
+    
+    i {
+      font-size: 0.9em;
+    }
+  }
+
+  // Floating action button
+  &--fab {
+    @include flex-center;
+    width: 56px;
+    height: 56px;
+    border-radius: $border-radius-full;
+    padding: 0;
+    @include card-shadow(md);
+    
+    &:hover {
+      transform: translateY(-2px) scale(1.05);
+    }
+  }
+
+  // Button group
+  &-group {
+    display: inline-flex;
+    
+    .btn {
+      margin: 0;
+      border-radius: 0;
+      
+      &:first-child {
+        border-top-left-radius: $border-radius-md;
+        border-bottom-left-radius: $border-radius-md;
+      }
+      
+      &:last-child {
+        border-top-right-radius: $border-radius-md;
+        border-bottom-right-radius: $border-radius-md;
+      }
+      
+      &:not(:last-child) {
+        border-right: none;
+      }
+    }
+  }
+
+  // Loading state
+  &--loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+// Button animations
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Responsive button adjustments
+@include respond-to(sm) {
+  .btn {
+    &--small {
+      padding: $spacing-xs $spacing-md;
+    }
+    
+    &--large {
+      padding: $spacing-lg $spacing-xl;
+      font-size: $font-size-xl;
+    }
+  }
+}

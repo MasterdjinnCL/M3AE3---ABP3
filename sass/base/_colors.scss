@@ -1,0 +1,155 @@
+// ==========================================================================
+// Colors
+// ==========================================================================
+
+// Color palette variables are defined in abstracts/_variables.scss
+// This file contains color utility classes and color-related styles
+
+// Background color utilities
+.bg-primary {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+.bg-secondary {
+  background-color: $color-secondary;
+  color: $color-white;
+}
+
+.bg-success {
+  background-color: $color-success;
+  color: $color-white;
+}
+
+.bg-warning {
+  background-color: $color-warning;
+  color: $color-dark;
+}
+
+.bg-danger {
+  background-color: $color-danger;
+  color: $color-white;
+}
+
+.bg-info {
+  background-color: $color-info;
+  color: $color-white;
+}
+
+.bg-light {
+  background-color: $color-light;
+  color: $color-dark;
+}
+
+.bg-dark {
+  background-color: $color-dark;
+  color: $color-white;
+}
+
+.bg-white {
+  background-color: $color-white;
+  color: $color-dark;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+// Text color utilities
+.text-primary {
+  color: $color-primary;
+}
+
+.text-secondary {
+  color: $color-secondary;
+}
+
+.text-success {
+  color: $color-success;
+}
+
+.text-warning {
+  color: $color-warning;
+}
+
+.text-danger {
+  color: $color-danger;
+}
+
+.text-info {
+  color: $color-info;
+}
+
+.text-light {
+  color: $color-light;
+}
+
+.text-dark {
+  color: $color-dark;
+}
+
+.text-white {
+  color: $color-white;
+}
+
+.text-muted {
+  color: $color-gray;
+}
+
+// Border color utilities
+.border-primary {
+  border-color: $color-primary;
+}
+
+.border-secondary {
+  border-color: $color-secondary;
+}
+
+.border-success {
+  border-color: $color-success;
+}
+
+.border-warning {
+  border-color: $color-warning;
+}
+
+.border-danger {
+  border-color: $color-danger;
+}
+
+.border-info {
+  border-color: $color-info;
+}
+
+.border-light {
+  border-color: $color-light;
+}
+
+.border-dark {
+  border-color: $color-dark;
+}
+
+.border-white {
+  border-color: $color-white;
+}
+
+// Gradient utilities
+.gradient-primary {
+  background: linear-gradient(135deg, $color-primary, $color-primary-light);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, $color-secondary, $color-secondary-light);
+}
+
+.gradient-sunset {
+  background: linear-gradient(135deg, #ff6b35, #ffb347);
+}
+
+.gradient-ocean {
+  background: linear-gradient(135deg, #ff9500, #ff6b35);
+}
+
+.gradient-forest {
+  background: linear-gradient(135deg, #e55a2b, #ff8c69);
+}

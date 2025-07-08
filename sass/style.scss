@@ -1,0 +1,32 @@
+// ==========================================================================
+// SASS 7-1 Pattern Main File
+// ==========================================================================
+
+// 1. Abstracts
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// 2. Vendors (Third-party CSS)
+// @import 'vendors/normalize';
+// @import 'vendors/bootstrap';
+
+// 3. Base
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/colors';
+
+// 4. Layout
+@import 'layout/header';
+@import 'layout/footer';
+
+// 5. Components
+@import 'components/buttons';
+@import 'components/cards';
+
+// 6. Pages
+@import 'pages/home';
+
+// 7. Themes
+// @import 'themes/theme';
+// @import 'themes/admin';
